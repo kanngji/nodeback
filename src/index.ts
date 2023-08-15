@@ -7,6 +7,7 @@ import cors from "cors";
 import dotenv from "dotenv";
 import mongoose from "mongoose";
 
+import router from "./router";
 dotenv.config();
 const app = express();
 
@@ -32,3 +33,5 @@ mongoose.connection.on("error", (error: Error) => console.log(error));
 mongoose.connection.once("open", () => {
   console.log("DB 연결이 되었습니다.");
 });
+
+app.use("/", router());
